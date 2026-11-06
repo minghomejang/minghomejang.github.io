@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>排排Go 好友挑戰 · Linelings challenge</title>
+<meta name="description" content="朋友傳來的排排Go挑戰：打開 App 玩同一題，比比看誰比較快。">
+<style>
+:root{--bg:#F4F6FF;--card:#fff;--ink:#1E2340;--muted:#5D6485;--blue:#3B5BDB;--yellow:#FFC93C}
+@media (prefers-color-scheme:dark){:root{--bg:#141729;--card:#1F2340;--ink:#F1F3FF;--muted:#A9AFCC}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 -apple-system,BlinkMacSystemFont,"Helvetica Neue","PingFang TC",sans-serif;display:grid;place-items:center;min-height:100vh;padding:16px}
+.card{background:var(--card);border-radius:24px;padding:28px 22px;max-width:420px;width:100%;text-align:center;box-shadow:0 10px 40px rgba(30,35,64,.12)}
+.icon{width:88px;height:88px;border-radius:22px;background:var(--blue);display:grid;place-items:center;margin:0 auto 14px;font-size:44px}
+h1{font-size:22px;margin:0 0 6px}p{margin:0 0 16px;color:var(--muted)}
+.btn{display:block;width:100%;padding:15px;border-radius:16px;border:0;font:800 17px/1 inherit;font-family:inherit;text-decoration:none;margin:10px 0;cursor:pointer}
+.primary{background:var(--blue);color:#fff}.store{background:var(--ink);color:var(--card)}
+.code{background:var(--bg);border-radius:12px;padding:10px;font:600 13px/1.4 ui-monospace,Menlo,monospace;word-break:break-all;margin:6px 0 4px}
+.copy{background:none;border:0;color:var(--blue);font:700 14px inherit;font-family:inherit;cursor:pointer}
+small{color:var(--muted);display:block;margin-top:14px;font-size:12.5px}
+</style>
+</head>
+<body>
+<main class="card">
+  <div class="icon" aria-hidden="true">⚔️</div>
+  <h1 id="h">朋友向你挑戰！</h1>
+  <p id="d">打開排排Go，玩同一題，比比看誰比較快。</p>
+  <a class="btn primary" id="open" href="linelings://c">打開排排Go</a>
+  <a class="btn store" id="store" href="https://apps.apple.com/app/id6829467865">在 App Store 下載</a>
+  <div id="cw" hidden><p style="margin:14px 0 0" id="cl">已經裝好但沒有自動打開？在 App 的「好友對戰」貼上挑戰碼：</p><div class="code" id="code"></div><button class="copy" id="copy">複製挑戰碼</button></div>
+  <small>Linelings · BT Studio</small>
+</main>
+<script>
+(function(){
+  var L=(navigator.language||'en').toLowerCase(),zh=L.indexOf('zh')===0;
+  if(!zh){document.documentElement.lang='en';
+    document.getElementById('h').textContent='A friend challenged you!';
+    document.getElementById('d').textContent='Open Linelings, play the same board and see who is faster.';
+    document.getElementById('open').textContent='Open Linelings';
+    document.getElementById('store').textContent='Download on the App Store';
+    document.getElementById('cl').textContent='Installed but it did not open? Paste this code in the app under Friends:';
+    document.getElementById('copy').textContent='Copy code';}
+  var m=(location.hash||'').match(/vs=([A-Za-z0-9_-]+)/),code=m?m[1]:'';
+  var open=document.getElementById('open');
+  if(code){open.href='linelings://c#vs='+code;document.getElementById('code').textContent=code;document.getElementById('cw').hidden=false;
+    setTimeout(function(){location.href=open.href},300);}
+  document.getElementById('copy').onclick=function(){try{navigator.clipboard.writeText(code);this.textContent=zh?'已複製':'Copied'}catch(e){}};
+})();
+</script>
+</body>
+</html>
