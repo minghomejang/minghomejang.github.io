@@ -1,0 +1,17 @@
+{
+  "_note": "Linelings remote settings (MONETIZATION_V11.md). Only these keys are read; wrong types are ignored.",
+  "win": 5,
+  "daily": 30,
+  "s3": 50,
+  "s7": 150,
+  "adCoins": 20,
+  "hint": 30,
+  "answer": 120,
+  "anCost": 500,
+  "thCost": 300,
+  "noAdLevels": 10,
+  "cd": [120, 100, 90],
+  "adDay": 20,
+  "starterH": 48,
+  "firstFreeHint": false
+}
