@@ -11,7 +11,7 @@
   "thCost": 300,
   "noAdLevels": 10,
   "cd": [120, 100, 90],
-  "adDay": 20,
+  "adDay": 9999,
   "starterH": 48,
   "firstFreeHint": false
 }
